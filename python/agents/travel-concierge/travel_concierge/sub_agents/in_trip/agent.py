@@ -16,17 +16,14 @@
 
 from google.adk.agents import Agent
 from google.adk.tools.agent_tool import AgentTool
-
 from travel_concierge.sub_agents.in_trip import prompt
 from travel_concierge.sub_agents.in_trip.tools import (
-    transit_coordination,
-    flight_status_check,
     event_booking_check,
+    flight_status_check,
+    transit_coordination,
     weather_impact_check,
 )
-
 from travel_concierge.tools.memory import memorize
-
 
 # This sub-agent is expected to be called every day closer to the trip, and frequently several times a day during the trip.
 day_of_agent = Agent(
@@ -55,8 +52,5 @@ in_trip_agent = Agent(
     sub_agents=[
         trip_monitor_agent
     ],  # This can be run as an AgentTool. Illustrate as an Agent for demo purpose.
-    tools=[
-        AgentTool(agent=day_of_agent), 
-        memorize
-    ],
+    tools=[AgentTool(agent=day_of_agent), memorize],
 )

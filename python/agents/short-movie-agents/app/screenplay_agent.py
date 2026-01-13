@@ -36,7 +36,9 @@ try:
         instruction=load_prompt_from_file("screenplay_agent.txt"),
         output_key="screenplay",
     )
-    logger.info(f"✅ Agent '{screenplay_agent.name}' created using model '{MODEL}'.")
+    logger.info(
+        f"✅ Agent '{screenplay_agent.name}' created using model '{MODEL}'."
+    )
 except Exception as e:
     logger.error(
         f"❌ Could not create Screenplay agent. Check API Key ({MODEL}). Error: {e}"

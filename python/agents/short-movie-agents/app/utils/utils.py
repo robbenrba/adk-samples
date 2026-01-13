@@ -27,7 +27,9 @@ def load_prompt_from_file(
     instruction = default_instruction
     try:
         # Construct path relative to the current script file (__file__)
-        filepath = os.path.join(os.path.dirname(__file__), PROMPTS_PATH, filename)
+        filepath = os.path.join(
+            os.path.dirname(__file__), PROMPTS_PATH, filename
+        )
         with open(filepath, encoding="utf-8") as f:
             instruction = f.read()
         logger.info(f"Successfully loaded instruction from {filename}")
@@ -36,5 +38,7 @@ def load_prompt_from_file(
             f"WARNING: Instruction file not found: {filepath}. Using default."
         )
     except Exception as e:
-        logger.error(f"ERROR loading instruction file {filepath}: {e}. Using default.")
+        logger.error(
+            f"ERROR loading instruction file {filepath}: {e}. Using default."
+        )
     return instruction

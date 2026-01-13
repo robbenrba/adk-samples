@@ -19,17 +19,14 @@ import logging
 from typing import Any, Callable
 
 from google.adk import runners
-from google.adk.agents import invocation_context
-from google.adk.agents import llm_agent
+from google.adk.agents import invocation_context, llm_agent
 from google.adk.events import event
 from google.adk.models import llm_response
 from google.adk.plugins import base_plugin
-from google.adk.tools import base_tool
-from google.adk.tools import tool_context
+from google.adk.tools import base_tool, tool_context
 from google.genai import types
 
-from .. import prompts
-from .. import util
+from .. import prompts, util
 
 Event = event.Event
 InMemoryRunner = runners.InMemoryRunner
@@ -56,7 +53,7 @@ default_jailbreak_safety_agent = LlmAgent(
     instruction=prompts.JAILBREAK_FILTER_INSTRUCTION,
 )
 
-default_safety_analysis_parser = lambda analysis: "UNSAFE" in analysis
+default_safety_analysis_parser = lambda analysis: "UNSAFE" in analysis  # noqa: E731
 
 
 class JudgeOn(str, enum.Enum):

@@ -68,7 +68,9 @@ def storyboard_generate(
         AUTHORIZED_URI = "https://storage.mtls.cloud.google.com/"
 
         # Actual image generation
-        logger.info(f"Generating image for scene {scene_number} with prompt: {prompt}")
+        logger.info(
+            f"Generating image for scene {scene_number} with prompt: {prompt}"
+        )
         response = generation_model.generate_images(
             prompt=prompt,
             number_of_images=1,
@@ -108,7 +110,9 @@ try:
         output_key="storyboard",
         tools=[storyboard_generate],
     )
-    logger.info(f"✅ Agent '{storyboard_agent.name}' created using model '{MODEL}'.")
+    logger.info(
+        f"✅ Agent '{storyboard_agent.name}' created using model '{MODEL}'."
+    )
 except Exception as e:
     logger.error(
         f"❌ Could not create Storyboard agent. Check API Key ({MODEL}). Error: {e}"

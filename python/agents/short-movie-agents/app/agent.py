@@ -37,7 +37,12 @@ if story_agent and screenplay_agent and storyboard_agent and video_agent:
         model=MODEL,
         description=(DESCRIPTION),
         instruction=load_prompt_from_file("director_agent.txt"),
-        sub_agents=[story_agent, screenplay_agent, storyboard_agent, video_agent],
+        sub_agents=[
+            story_agent,
+            screenplay_agent,
+            storyboard_agent,
+            video_agent,
+        ],
     )
     logger.info(f"✅ Agent '{root_agent.name}' created using model '{MODEL}'.")
 else:

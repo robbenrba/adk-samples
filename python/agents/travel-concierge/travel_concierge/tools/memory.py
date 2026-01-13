@@ -14,19 +14,19 @@
 
 """The 'memorize' tool for several agents to affect session states."""
 
-from datetime import datetime
 import json
 import os
-from typing import Dict, Any
+from datetime import datetime
+from typing import Any, Dict
 
 from google.adk.agents.callback_context import CallbackContext
 from google.adk.sessions.state import State
 from google.adk.tools import ToolContext
-
 from travel_concierge.shared_libraries import constants
 
 SAMPLE_SCENARIO_PATH = os.getenv(
-    "TRAVEL_CONCIERGE_SCENARIO", "travel_concierge/profiles/itinerary_empty_default.json"
+    "TRAVEL_CONCIERGE_SCENARIO",
+    "travel_concierge/profiles/itinerary_empty_default.json",
 )
 
 
@@ -117,7 +117,7 @@ def _load_precreated_itinerary(callback_context: CallbackContext):
 
     Args:
         callback_context: The callback context.
-    """    
+    """
     data = {}
     with open(SAMPLE_SCENARIO_PATH, "r") as file:
         data = json.load(file)

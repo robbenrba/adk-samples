@@ -26,7 +26,6 @@ from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset, StdioServerParamet
 from google.genai import types
 from travel_concierge.agent import root_agent
 
-
 load_dotenv()
 
 

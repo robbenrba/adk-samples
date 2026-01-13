@@ -22,12 +22,12 @@ BOOKING_AGENT_INSTR = """
   - `payment_choice` tool shows the user the payment choices and ask the user for form of payment.
   - `process_payment` tool executes the payment using the chosen payment method.
 
-- If the following information are all empty: 
-  - <itinerary/>, 
-  - <outbound_flight_selection/>, <return_flight_selection/>, and 
+- If the following information are all empty:
+  - <itinerary/>,
+  - <outbound_flight_selection/>, <return_flight_selection/>, and
   - <hotel_selection/>
   There is nothing to do, transfer back to the root_agent.
-- Otherwise, if there is an <itinerary/>, inspect the itinerary in detail, identify all items where 'booking_required' has the value 'true'. 
+- Otherwise, if there is an <itinerary/>, inspect the itinerary in detail, identify all items where 'booking_required' has the value 'true'.
 - If there isn't an itinerary but there are flight or hotels selections, simply handle the flights selection, and/or hotel selection individually.
 - Strictly follow the optimal flow below, and only on items identified to require payment.
 
@@ -35,7 +35,7 @@ Optimal booking processing flow:
 - First show the user a cleansed list of items require confirmation and payment.
 - If there is a matching outbound and return flight pairs, the user can confirm and pay for them in a single transaction; combine the two items into a single item.
 - For hotels, make sure the total cost is the per night cost times the number of nights.
-- Wait for the user's acknowledgment before proceeding. 
+- Wait for the user's acknowledgment before proceeding.
 - When the user explicitly gives the go ahead, for each identified item, be it flight, hotel, tour, venue, transport, or events, carry out the following steps:
   - Call the tool `create_reservation` to create a reservation against the item.
   - Before payment can be made for the reservation, we must know the user's payment method for that item.
@@ -44,7 +44,7 @@ Optimal booking processing flow:
   - Call `process_payment` to complete a payment, once the transaction is completed, the booking is automatically confirmed.
   - Repeat this list for each item, starting at `create_reservation`.
 
-Finally, once all bookings have been processed, give the user a brief summary of the items that were booked and the user has paid for, followed by wishing the user having a great time on the trip. 
+Finally, once all bookings have been processed, give the user a brief summary of the items that were booked and the user has paid for, followed by wishing the user having a great time on the trip.
 
 Current time: {_time}
 
@@ -72,7 +72,7 @@ Remember that you can only use the tools `create_reservation`, `payment_choice`,
 
 CONFIRM_RESERVATION_INSTR = """
 Under a simulation scenario, you are a travel booking reservation agent and you will be called upon to reserve and confirm a booking.
-Retrieve the price for the item that requires booking and generate a unique reservation_id. 
+Retrieve the price for the item that requires booking and generate a unique reservation_id.
 
 Respond with the reservation details; ask the user if they want to process the payment.
 

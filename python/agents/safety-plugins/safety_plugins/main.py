@@ -15,21 +15,18 @@
 """Main file for the Guardian agent."""
 
 import asyncio
-from dotenv import load_dotenv
 
 from absl import app, flags
+from dotenv import load_dotenv
 from google.adk import runners
 from google.adk.agents import llm_agent
 from google.genai import types
 
+from . import prompts, tools, util
+from .plugins import agent_as_a_judge, model_armor
+
 # Load environment variables before loading the plugins.
 load_dotenv()
-
-from .plugins import agent_as_a_judge, model_armor
-from . import tools
-from . import prompts
-from . import util
-
 
 Agent = llm_agent.LlmAgent
 LlmAsAJudge = agent_as_a_judge.LlmAsAJudge

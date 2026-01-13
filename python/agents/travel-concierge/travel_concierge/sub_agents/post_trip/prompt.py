@@ -15,7 +15,7 @@
 """Prompt for the post-trip agent."""
 
 POSTTRIP_INSTR = """
-You are a post-trip travel assistant.  Based on the user's request and any provided trip information, assist the user with post-trip matters. 
+You are a post-trip travel assistant.  Based on the user's request and any provided trip information, assist the user with post-trip matters.
 
 Given the itinerary:
 <itinerary>

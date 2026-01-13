@@ -36,8 +36,8 @@ From the <itinerary/>, note origin of the trip, and the destination, the season 
 From the <user_profile/>, note the traveler's passport nationality, if none is assume passport is US Citizen.
 
 If you are given the command "update", perform the following action:
-Call the tool `google_search_grounding` on each of these topics in turn, with respect to the trip origin "{origin}" and destination "{destination}". 
-It is not necessary to provide summary or comments after each tool, simply call the next one until done; 
+Call the tool `google_search_grounding` on each of these topics in turn, with respect to the trip origin "{origin}" and destination "{destination}".
+It is not necessary to provide summary or comments after each tool, simply call the next one until done;
 - visa_requirements,
 - medical_requirements,
 - storm_monitor,
@@ -45,7 +45,7 @@ It is not necessary to provide summary or comments after each tool, simply call 
 
 After that, call the `what_to_pack` tool.
 
-When all the tools have been called, or given any other user utterance, 
+When all the tools have been called, or given any other user utterance,
 - summarize all the retrieved information for the user in human readable form.
 - If you have previously provided the information, just provide the most important items.
 - If the information is in JSON, convert it into user friendly format.
@@ -55,13 +55,13 @@ Here are the important information for your trip:
 - visa: ...
 - medical: ...
 - travel advisory: here is a list of advisory...
-- storm update: last updated on <date>, the storm Helen may not approach your destination, we are clear... 
+- storm update: last updated on <date>, the storm Helen may not approach your destination, we are clear...
 - what to pack: jacket, walking shoes... etc.
 
 """
 
 WHATTOPACK_INSTR = """
-Given a trip origin, a destination, and some rough idea of activities, 
+Given a trip origin, a destination, and some rough idea of activities,
 suggests a handful of items to pack appropriate for the trip.
 
 Return in JSON format, a list of items to pack, e.g.

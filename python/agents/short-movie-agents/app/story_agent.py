@@ -26,7 +26,9 @@ story_agent = None
 
 try:
     MODEL = "gemini-2.5-flash"
-    DESCRIPTION = "An agent that generates a short, engaging campfire story for scouts."
+    DESCRIPTION = (
+        "An agent that generates a short, engaging campfire story for scouts."
+    )
     story_agent = Agent(
         model=MODEL,
         name="story_agent",
@@ -34,7 +36,9 @@ try:
         instruction=load_prompt_from_file("story_agent.txt"),
         output_key="story",
     )
-    logging.info(f"✅ Agent '{story_agent.name}' created using model '{MODEL}'.")
+    logging.info(
+        f"✅ Agent '{story_agent.name}' created using model '{MODEL}'."
+    )
 except Exception as e:
     logging.error(
         f"❌ Could not create Story agent. Check API Key ({MODEL}). Error: {e}"

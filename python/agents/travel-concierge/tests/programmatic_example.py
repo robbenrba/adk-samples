@@ -15,6 +15,7 @@
 """This is a rudimentary example showing how to interact with an ADK agent as a server end point."""
 
 import json
+
 import requests
 
 #
@@ -99,7 +100,7 @@ for user_input in user_inputs:
                     name = function_call["name"]
                     args = function_call["args"]
                     print(
-                        f'\n{author}\nfunction call: "{name}"\nargs: {json.dumps(args,indent=2)}\n'
+                        f'\n{author}\nfunction call: "{name}"\nargs: {json.dumps(args, indent=2)}\n'
                     )
 
             elif function_responses:

@@ -32,9 +32,7 @@ logger.setLevel(logging.DEBUG)
 MODEL = "gemini-2.5-flash"
 VIDEO_MODEL = "veo-3.0-generate-preview"
 VIDEO_MODEL_LOCATION = "us-central1"
-DESCRIPTION = (
-    "Agent responsible for creating videos based on a screenplay and storyboards"
-)
+DESCRIPTION = "Agent responsible for creating videos based on a screenplay and storyboards"
 ASPECT_RATIO = "16:9"
 
 client = genai.Client(
@@ -73,14 +71,20 @@ def video_generate(
         AUTHORIZED_URI = "https://storage.mtls.cloud.google.com/"
 
         # Extract dialogue from screenplay
-        dialogue = "\n".join(re.findall(r"^\w+\s*\(.+\)\s*$", screenplay, re.MULTILINE))
-        dialogue += "\n".join(re.findall(r"^\s{2,}.+$", screenplay, re.MULTILINE))
+        dialogue = "\n".join(
+            re.findall(r"^\w+\s*\(.+\)\s*$", screenplay, re.MULTILINE)
+        )
+        dialogue += "\n".join(
+            re.findall(r"^\s{2,}.+$", screenplay, re.MULTILINE)
+        )
 
         if dialogue:
             prompt += f"\n\nAudio:\n{dialogue}"
 
         # Actual video generation
-        logger.info(f"Generating video for prompt '{prompt}' and image '{image_link}'")
+        logger.info(
+            f"Generating video for prompt '{prompt}' and image '{image_link}'"
+        )
 
         operation = client.models.generate_videos(
             model=VIDEO_MODEL,

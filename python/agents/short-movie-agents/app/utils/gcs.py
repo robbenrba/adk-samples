@@ -14,11 +14,13 @@
 
 import logging
 
-import google.cloud.storage as storage
 from google.api_core import exceptions
+from google.cloud import storage
 
 
-def create_bucket_if_not_exists(bucket_name: str, project: str, location: str) -> None:
+def create_bucket_if_not_exists(
+    bucket_name: str, project: str, location: str
+) -> None:
     """Creates a new bucket if it doesn't already exist.
 
     Args:

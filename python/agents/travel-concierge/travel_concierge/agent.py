@@ -14,21 +14,19 @@
 
 """Demonstration of Travel AI Conceirge using Agent Development Kit"""
 
-from google.adk.agents import Agent
 import uuid
-from travel_concierge import prompt
 
+from google.adk.agents import Agent
+from openinference.instrumentation import using_session
+from travel_concierge import prompt
 from travel_concierge.sub_agents.booking.agent import booking_agent
 from travel_concierge.sub_agents.in_trip.agent import in_trip_agent
 from travel_concierge.sub_agents.inspiration.agent import inspiration_agent
 from travel_concierge.sub_agents.planning.agent import planning_agent
 from travel_concierge.sub_agents.post_trip.agent import post_trip_agent
 from travel_concierge.sub_agents.pre_trip.agent import pre_trip_agent
-
 from travel_concierge.tools.memory import _load_precreated_itinerary
-
 from travel_concierge.tracing import instrument_adk_with_arize
-from openinference.instrumentation import using_session
 
 _ = instrument_adk_with_arize()
 

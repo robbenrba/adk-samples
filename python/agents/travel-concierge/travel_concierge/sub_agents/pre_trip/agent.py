@@ -20,7 +20,6 @@ from travel_concierge.shared_libraries import types
 from travel_concierge.sub_agents.pre_trip import prompt
 from travel_concierge.tools.search import google_search_grounding
 
-
 what_to_pack_agent = Agent(
     model="gemini-2.5-flash",
     name="what_to_pack_agent",

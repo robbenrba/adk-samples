@@ -15,7 +15,6 @@
 """Post-trip agent. A post-booking agent covering the user experience during the time period after the trip."""
 
 from google.adk.agents import Agent
-
 from travel_concierge.sub_agents.post_trip import prompt
 from travel_concierge.tools.memory import memorize
 

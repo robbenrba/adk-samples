@@ -15,10 +15,10 @@
 """Wrapper to Google Maps Places API."""
 
 import os
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
-from google.adk.tools import ToolContext
 import requests
+from google.adk.tools import ToolContext
 
 
 class PlacesService:
@@ -74,7 +74,9 @@ class PlacesService:
         except requests.exceptions.RequestException as e:
             return {"error": f"Error fetching place data: {e}"}
 
-    def get_photo_urls(self, photos: List[Dict[str, Any]], maxwidth: int = 400) -> List[str]:
+    def get_photo_urls(
+        self, photos: List[Dict[str, Any]], maxwidth: int = 400
+    ) -> List[str]:
         """Extracts photo URLs from the 'photos' list."""
         photo_urls = []
         for photo in photos:
@@ -99,7 +101,7 @@ def map_tool(key: str, tool_context: ToolContext):
     Args:
         key: The key under which the POIs are stored.
         tool_context: The ADK tool context.
-        
+
     Returns:
         The updated state with the full JSON object under the key.
     """

@@ -19,7 +19,6 @@ from typing import Optional, Union
 from google.genai import types
 from pydantic import BaseModel, Field
 
-
 # Convenient declaration for controlled generation.
 json_response_config = types.GenerateContentConfig(
     response_mime_type="application/json"
@@ -28,6 +27,7 @@ json_response_config = types.GenerateContentConfig(
 
 class Room(BaseModel):
     """A room for selection."""
+
     is_available: bool = Field(
         description="Whether the room type is available for selection."
     )
@@ -39,11 +39,13 @@ class Room(BaseModel):
 
 class RoomsSelection(BaseModel):
     """A list of rooms for selection."""
+
     rooms: list[Room]
 
 
 class Hotel(BaseModel):
     """A hotel from the search."""
+
     name: str = Field(description="Name of the hotel")
     address: str = Field(description="Full address of the Hotel")
     check_in_time: str = Field(description="Time in HH:MM format, e.g. 16:00")
@@ -54,11 +56,13 @@ class Hotel(BaseModel):
 
 class HotelsSelection(BaseModel):
     """A list of hotels from the search."""
+
     hotels: list[Hotel]
 
 
 class Seat(BaseModel):
     """A Seat from the search."""
+
     is_available: bool = Field(
         description="Whether the seat is available for selection."
     )
@@ -68,11 +72,13 @@ class Seat(BaseModel):
 
 class SeatsSelection(BaseModel):
     """A list of seats from the search."""
+
     seats: list[list[Seat]]
 
 
 class AirportEvent(BaseModel):
     """An Airport event."""
+
     city_name: str = Field(description="Name of the departure city")
     airport_code: str = Field(description="IATA code of the departure airport")
     timestamp: str = Field(description="ISO 8601 departure or arrival date and time")
@@ -80,6 +86,7 @@ class AirportEvent(BaseModel):
 
 class Flight(BaseModel):
     """A Flight search result."""
+
     flight_number: str = Field(
         description="Unique identifier for the flight, like BA123, AA31, etc."
     )
@@ -95,11 +102,13 @@ class Flight(BaseModel):
 
 class FlightsSelection(BaseModel):
     """A list of flights from the search."""
+
     flights: list[Flight]
 
 
 class Destination(BaseModel):
     """A destination recommendation."""
+
     name: str = Field(description="A Destination's Name")
     country: str = Field(description="The Destination's Country Name")
     image: str = Field(description="verified URL to an image of the destination")
@@ -109,11 +118,13 @@ class Destination(BaseModel):
 
 class DestinationIdeas(BaseModel):
     """Destinations recommendation."""
+
     places: list[Destination]
 
 
 class POI(BaseModel):
     """A Point Of Interest suggested by the agent."""
+
     place_name: str = Field(description="Name of the attraction")
     address: str = Field(
         description="An address or sufficient information to geocode for a Lat/Lon"
@@ -135,11 +146,13 @@ class POI(BaseModel):
 
 class POISuggestions(BaseModel):
     """Points of interest recommendation."""
+
     places: list[POI]
 
 
 class AttractionEvent(BaseModel):
     """An Attraction."""
+
     event_type: str = Field(default="visit")
     description: str = Field(
         description="A title or description of the activity or the attraction visit"
@@ -153,6 +166,7 @@ class AttractionEvent(BaseModel):
 
 class FlightEvent(BaseModel):
     """A Flight Segment in the itinerary."""
+
     event_type: str = Field(default="flight")
     description: str = Field(description="A title or description of the Flight")
     booking_required: bool = Field(default=True)
@@ -171,6 +185,7 @@ class FlightEvent(BaseModel):
 
 class HotelEvent(BaseModel):
     """A Hotel Booking in the itinerary."""
+
     event_type: str = Field(default="hotel")
     description: str = Field(description="A name, title or a description of the hotel")
     address: str = Field(description="Full address of the attraction")
@@ -186,6 +201,7 @@ class HotelEvent(BaseModel):
 
 class ItineraryDay(BaseModel):
     """A single day of events in the itinerary."""
+
     day_number: int = Field(
         description="Identify which day of the trip this represents, e.g. 1, 2, 3... etc."
     )
@@ -197,6 +213,7 @@ class ItineraryDay(BaseModel):
 
 class Itinerary(BaseModel):
     """A multi-day itinerary."""
+
     trip_name: str = Field(
         description="Simple one liner to describe the trip. e.g. 'San Diego to Seattle Getaway'"
     )
@@ -211,6 +228,7 @@ class Itinerary(BaseModel):
 
 class UserProfile(BaseModel):
     """An example user profile."""
+
     allergies: list[str] = Field(
         default=[], description="A list of food allergies to avoid"
     )
@@ -228,4 +246,5 @@ class UserProfile(BaseModel):
 
 class PackingList(BaseModel):
     """A list of things to pack for the trip."""
+
     items: list[str]

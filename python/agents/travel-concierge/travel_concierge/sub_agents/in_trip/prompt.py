@@ -15,7 +15,7 @@
 """Prompt for in_trip, trip_monitor and day_of agents."""
 
 TRIP_MONITOR_INSTR = """
-Given an itinerary: 
+Given an itinerary:
 <itinerary>
 {itinerary}
 </itinerary>
@@ -66,7 +66,7 @@ The current time is "{itinerary_datetime}".
 """
 
 NEED_ITIN_INSTR = """
-Cannot find an itinerary to work on. 
+Cannot find an itinerary to work on.
 Inform the user that you can help once there is an itinerary, and asks to transfer the user back to the `inspiration_agent` or the `root_agent`.
 """
 

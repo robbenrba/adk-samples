@@ -15,15 +15,16 @@
 """Tools for the in_trip, trip_monitor and day_of agents."""
 
 from datetime import datetime
-from typing import Dict, Any
+from typing import Any, Dict
 
 from google.adk.agents.readonly_context import ReadonlyContext
-
-from travel_concierge.sub_agents.in_trip import prompt
 from travel_concierge.shared_libraries import constants
+from travel_concierge.sub_agents.in_trip import prompt
 
 
-def flight_status_check(flight_number: str, flight_date: str, checkin_time: str, departure_time: str):
+def flight_status_check(
+    flight_number: str, flight_date: str, checkin_time: str, departure_time: str
+):
     """Checks the status of a flight, given its flight_number, date, checkin_time and departure_time."""
     print("Checking", flight_number, flight_date, checkin_time, departure_time)
     return {"status": f"Flight {flight_number} checked"}
@@ -37,7 +38,9 @@ def event_booking_check(event_name: str, event_date: str, event_location: str):
     return {"status": f"{event_name} checked"}
 
 
-def weather_impact_check(activity_name: str, activity_date: str, activity_location: str):
+def weather_impact_check(
+    activity_name: str, activity_date: str, activity_location: str
+):
     """
     Checks the status of an outdoor activity that may be impacted by weather, given its name, date, and its location.
 
@@ -124,7 +127,9 @@ def parse_as_destin(destin_json: Dict[str, Any]):
             return "Local in the region", "as soon as possible"
 
 
-def find_segment(profile: Dict[str, Any], itinerary: Dict[str, Any], current_datetime: str):
+def find_segment(
+    profile: Dict[str, Any], itinerary: Dict[str, Any], current_datetime: str
+):
     """
     Find the events to travel from A to B
     This follows the itinerary schema in types.Itinerary.
@@ -135,7 +140,7 @@ def find_segment(profile: Dict[str, Any], itinerary: Dict[str, Any], current_dat
     Args:
         profile: A dictionary containing the user's profile.
         itinerary: A dictionary containing the user's itinerary.
-        current_datetime: A string containing the current date and time.   
+        current_datetime: A string containing the current date and time.
 
     Returns:
       from - capture information about the origin of this segment.
@@ -188,7 +193,7 @@ def find_segment(profile: Dict[str, Any], itinerary: Dict[str, Any], current_dat
     return (travel_from, travel_to, leave_by, arrive_by)
 
 
-def _inspect_itinerary(state: dict[str: Any]):
+def _inspect_itinerary(state: dict[str:Any]):
     """Identifies and returns the itinerary, profile and current datetime from the session state."""
 
     itinerary = state[constants.ITIN_KEY]

@@ -21,7 +21,6 @@ from travel_concierge.shared_libraries import types
 from travel_concierge.sub_agents.planning import prompt
 from travel_concierge.tools.memory import memorize
 
-
 itinerary_agent = Agent(
     model="gemini-2.5-flash",
     name="itinerary_agent",
@@ -98,7 +97,5 @@ planning_agent = Agent(
         AgentTool(agent=itinerary_agent),
         memorize,
     ],
-    generate_content_config=GenerateContentConfig(
-        temperature=0.1, top_p=0.5
-    )
+    generate_content_config=GenerateContentConfig(temperature=0.1, top_p=0.5),
 )
