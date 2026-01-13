@@ -24,6 +24,7 @@ from google.genai import types
 
 from ...config import CODE_EXEC_MODEL, RETRY_INITIAL_DELAY, RETRY_ATTEMPTS
 from ...callbacks import before_gap_analysis, after_gap_analysis
+from ...tools import analyze_market_gaps
 
 
 GAP_ANALYSIS_INSTRUCTION = """You are a data scientist analyzing market opportunities using quantitative methods.
@@ -128,6 +129,7 @@ gap_analysis_agent = LlmAgent(
         ),
     ),
     code_executor=BuiltInCodeExecutor(),
+    tools=[analyze_market_gaps],
     output_key="gap_analysis",
     before_agent_callback=before_gap_analysis,
     after_agent_callback=after_gap_analysis,

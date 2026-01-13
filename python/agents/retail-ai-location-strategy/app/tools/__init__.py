@@ -15,11 +15,17 @@
 """Custom tools for the Location Strategy Pipeline."""
 
 from .places_search import search_places
+from .places_details import get_place_details
 from .image_generator import generate_infographic
 from .html_report_generator import generate_html_report
+from .places_insights import analyze_market_gaps, get_price_segmentation, find_competitor_weaknesses
 
 __all__ = [
     "search_places",
+    "get_place_details",
     "generate_infographic",
     "generate_html_report",
+    "analyze_market_gaps", 
+    "get_price_segmentation", 
+    "find_competitor_weaknesses"
 ]

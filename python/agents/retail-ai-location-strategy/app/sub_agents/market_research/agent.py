@@ -24,6 +24,7 @@ from google.genai import types
 
 from ...config import FAST_MODEL, RETRY_INITIAL_DELAY, RETRY_ATTEMPTS
 from ...callbacks import before_market_research, after_market_research
+from ...tools import get_price_segmentation
 
 
 MARKET_RESEARCH_INSTRUCTION = """You are a market research analyst specializing in retail location intelligence.
@@ -85,7 +86,7 @@ market_research_agent = LlmAgent(
             ),
         ),
     ),
-    tools=[google_search],
+    tools=[google_search, get_price_segmentation],
     output_key="market_research_findings",
     before_agent_callback=before_market_research,
     after_agent_callback=after_market_research,

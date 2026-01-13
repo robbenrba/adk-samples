@@ -82,7 +82,7 @@ The analysis runs automatically through all stages and produces artifacts
 including JSON report, HTML report, and infographic image.
 """,
     sub_agents=[
-        market_research_agent,      # Part 1: Market research with search
+        market_research_agent,      # Part 1: Market research with search and insight
         competitor_mapping_agent,   # Part 2A: Competitor mapping with Maps
         gap_analysis_agent,         # Part 2B: Gap analysis with code exec
         strategy_advisor_agent,     # Part 3: Strategy synthesis
