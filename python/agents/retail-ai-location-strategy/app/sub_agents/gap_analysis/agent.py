@@ -100,7 +100,19 @@ Create a weighted ranking considering:
 - Infrastructure quality (weight: 15%)
 - Manageable costs (weight: 10%)
 
-### Step 6: Output Tables
+### Step 6: Enhance Results using Places Insight
+- Use {analyze_market_gaps} with queries like :
+    city: Target city (e.g., "Chicago").
+    business_type: The primary type (e.g., "coffee_shop", "gym").
+    analysis_mode: The type of analysis to run. Options:
+        - "AMENITY_GAP": Finds % of places lacking a specific feature.
+        - "VULNERABILITY": Finds areas with high traffic but low ratings.
+        - "PRICE_DISTRIBUTION": Shows count of places by price level.
+    target_amenity: (Required for AMENITY_GAP) The column to check.
+                    Examples: "drive_through", "outdoor_seating", "delivery",
+                    "wheelchair_accessible_entrance", "serves_vegetarian_food".
+
+### Step 7: Output Tables
 Generate clear output tables showing:
 1. All zones with computed metrics
 2. Top 3 recommended zones with scores

@@ -22,7 +22,7 @@ from google.adk.agents import LlmAgent
 from google.genai import types
 
 from ...config import FAST_MODEL, RETRY_INITIAL_DELAY, RETRY_ATTEMPTS
-from ...tools import search_places, get_place_details, find_competitor_weaknesses
+from ...tools import search_places, find_competitor_weaknesses
 from ...callbacks import before_competitor_mapping, after_competitor_mapping
 
 
@@ -34,16 +34,15 @@ TARGET LOCATION: {target_location}
 BUSINESS TYPE: {business_type}
 CURRENT DATE: {current_date}
 
+AMENITIES: {check_amenity}
+
 ## Your Mission
-Use the search_places and get_place_details function to get REAL data from Google Maps about existing competitors.
+Use the search_places function to get REAL data from Google Maps about existing competitors.
 
 ## Step 1: Search for Competitors
 Call the search_places function with queries like:
 - "{business_type} near {target_location}"
 - Related business types in the same area
-Call the get_place_details function with queries like:
--
--
 
 ## Step 2: Analyze the Results
 For each competitor found, note:
@@ -79,6 +78,13 @@ Provide insights on:
 - Which areas might be underserved opportunities?
 - What quality gaps exist (e.g., no premium options)?
 - Where are the strongest competitors located?
+- Find competitor weakness utilizing {find_competitor_weaknesses}
+    Call the {find_competitor_weaknesses} function with queries like:
+    "{business_type} near {target_location}" with additional check_amenity if needed.
+    check_amenity: Optional. A specific feature to check for saturation.
+                       Valid: "drive_through", "outdoor_seating", "delivery", 
+                       "serves_vegetarian_food".
+
 
 ## Output Format
 Provide a detailed competitor map with:
@@ -103,7 +109,7 @@ competitor_mapping_agent = LlmAgent(
             ),
         ),
     ),
-    tools=[search_places, get_place_details, find_competitor_weaknesses],
+    tools=[search_places, find_competitor_weaknesses],
     output_key="competitor_analysis",
     before_agent_callback=before_competitor_mapping,
     after_agent_callback=after_competitor_mapping,

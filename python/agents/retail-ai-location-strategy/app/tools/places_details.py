@@ -18,7 +18,7 @@ import os
 from google.adk.tools import ToolContext
 
 
-def get_place_details(place_id: str, tool_context: ToolContext) -> dict:
+def get_places_details(place_id: str, tool_context: ToolContext) -> dict:
     """Retrieve deep insights, reviews, and details for a specific place.
 
     This tool uses the Google Maps Place Details API to fetch granular data
